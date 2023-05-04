@@ -17,12 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/workers', function() {
-    return 'This is worker from works';
-});
+Route::get('/workers', [\App\Http\Controllers\WorkerController::class, 'index']);
 
-//Route::get('/workers', function() {
-//    echo 'bla bla bla';
-//    dd('1234asdf'); // die dump
-//    echo 'This is worker from works';
-//});
+Route::get('/workers/show', [\App\Http\Controllers\WorkerController::class, 'show']);
