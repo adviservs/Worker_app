@@ -10,24 +10,14 @@ class WorkerController extends Controller
     public function index()
     {
         $workers = Worker::all();
-        foreach ($workers as $worker) {
-            dump($worker->name);
-        }
 
-//        $workers = Worker::first();
-//        $worker->new_attr = 'new attr'; // add a new attribute
-//        dd($worker);
+        return view('worker.index', compact('workers'));
 
-//        $workers = Worker::all();
-//        dd($workers);
     }
 
-    public function show()
+    public function show(Worker $worker)
     {
-        $worker = Worker::all();
-        dd($worker->toArray());
-//        $worker = Worker::find(2);
-//        dd($worker);
+      return view('worker.show', compact('worker'));
     }
 
     public function create()
@@ -48,7 +38,7 @@ class WorkerController extends Controller
 
     public function update()
     {
-        $worker = Worker::find(2);
+        $worker = Worker::find(3);
 
 //        $worker->name = 'New Name';
 //        $worker->save();
