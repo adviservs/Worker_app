@@ -20,22 +20,27 @@ class WorkerController extends Controller
       return view('worker.show', compact('worker'));
     }
 
+//    index
+//    show
+
+//    create
+//    store
+
+//    edit
+//    update
+
+//    delete (destroy)
+
+
     public function create()
     {
-        $worker = [
-            'name' => 'Mark',
-            'surname' => 'Markov',
-            'email' => 'Markov@mail.ru',
-            'age' => 20,
-            'description' => 'I am Mark',
-            'is_married' => false,
-        ];
-
-        Worker::create($worker);
-
-        return 'Mark was created';
+        return view('worker.create');
     }
 
+    public function store()
+    {
+        dd('11111111');
+    }
     public function update()
     {
         $worker = Worker::find(3);
