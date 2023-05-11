@@ -12,7 +12,7 @@ Create page
 <div>
     <hr>
         <div>
-            <form atcion="{{ route('worker.store') }}" method="Post">
+            <form action="{{ route('worker.store') }}" method="Post">
                 @csrf
                 <div style="margin-bottom: 15px;"><input type="text" name="name" placeholder="name"></div>
                 <div style="margin-bottom: 15px;"><input type="text" name="surname" placeholder="surname"></div>
