@@ -46,6 +46,12 @@ class WorkerController extends Controller
 
         return redirect()->route('worker.index');
     }
+
+    public function edit(Worker $worker)
+    {
+        return view('worker.edit', compact('worker'));
+    }
+
     public function update()
     {
         $worker = Worker::find(3);
