@@ -12,8 +12,9 @@ Create page
 <div>
     <hr>
         <div>
-            <form action="{{ route('worker.store') }}" method="Post">
+            <form action="{{ route('worker.update', $worker->id) }}" method="Post">
                 @csrf
+                @method('Patch')
                 <div style="margin-bottom: 15px;"><input type="text" name="name" placeholder="name" value="{{ $worker->name }}"></div>
                 <div style="margin-bottom: 15px;"><input type="text" name="surname" placeholder="surname" value="{{ $worker->surname }}"></div>
                 <div style="margin-bottom: 15px;"><input type="email" name="email" placeholder="email" value="{{ $worker->email }}"></div>

@@ -27,7 +27,9 @@ Index page
             <div>Updated: {{ $worker->updated_at }}</div>
             <div>
                 <a href="{{ route('worker.show', $worker->id) }}">Посмотреть</a>
-                <a href="{{ route('worker.edit', $worker->id) }}">Редактировать</a>
+                <div>
+                    <a href="{{ route('worker.edit', $worker->id) }}">Редактировать</a>
+                </div>
             </div>
         </div>
         <hr>

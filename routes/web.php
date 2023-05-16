@@ -30,6 +30,6 @@ Route::post('/workers', [\App\Http\Controllers\WorkerController::class, 'store']
 // php artisan route:list, php artisan route:clear, php artisan cache:clear
 Route::get('/workers/{worker}/edit', [\App\Http\Controllers\WorkerController::class, 'edit'])->name('worker.edit');
 
-//Route::get('/workers/update', [\App\Http\Controllers\WorkerController::class, 'update'])->name('worker.update');
+Route::patch('/workers/{worker}', [\App\Http\Controllers\WorkerController::class, 'update'])->name('worker.update');
 
 //Route::get('/workers/delete', [\App\Http\Controllers\WorkerController::class, 'delete'])->name('worker.delete');
