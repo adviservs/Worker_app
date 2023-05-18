@@ -36,9 +36,7 @@ Create page
                 @enderror
             </div>
             <div style="margin-bottom: 15px;">
-                <textarea name="description" placeholder="description">
-                    {{ old('description') }}
-                </textarea>
+                <textarea name="description" placeholder="description">{{ old('description') }}</textarea>
                 @error('description')
                 {{ $message }}
                 @enderror
