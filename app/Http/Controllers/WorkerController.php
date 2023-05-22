@@ -10,83 +10,83 @@ use Illuminate\Http\Request;
 
 class WorkerController extends Controller
 {
-    public function index(IndexRequest $request)
-    {
-        $data = $request->validated();
+  public function index(IndexRequest $request)
+  {
+    $data = $request->validated();
 
-        $workerQuery = Worker::query();
+    $workerQuery = Worker::query();
 
-        if (isset($data['name'])){
-            $workerQuery->where('name', 'like', "%{$data['name']}%");
-        }
-
-        if (isset($data['surname'])){
-            $workerQuery->where('surname', 'like', "%{$data['surname']}%");
-        }
-
-        if (isset($data['email'])){
-            $workerQuery->where('email', 'like', "%{$data['email']}%");
-        }
-
-        if (isset($data['from'])){
-            $workerQuery->where('age', '>', $data['from']);
-        }
-
-        if (isset($data['to'])){
-            $workerQuery->where('age', '<', $data['to']);
-        }
-
-        if (isset($data['description'])){
-            $workerQuery->where('description', 'like', "%{$data['description']}%");
-        }
-
-        if (isset($data['is_married'])){
-            $workerQuery->where('is_married', true);
-        }
-
-        $workers = $workerQuery->paginate(2);
-
-        return view('worker.index', compact('workers'));
-
+    if (isset($data['name'])) {
+      $workerQuery->where('name', 'like', "%{$data['name']}%");
     }
 
-    public function show(Worker $worker)
-    {
-      return view('worker.show', compact('worker'));
+    if (isset($data['surname'])) {
+      $workerQuery->where('surname', 'like', "%{$data['surname']}%");
     }
 
-    public function create()
-    {
-        return view('worker.create');
+    if (isset($data['email'])) {
+      $workerQuery->where('email', 'like', "%{$data['email']}%");
     }
 
-    public function store(StoreRequest $request)
-    {
-        $data = $request->validated();
-        $data['is_married'] = isset($data['is_married']);
-        Worker::create($data);
-
-        return redirect()->route('worker.index');
+    if (isset($data['from'])) {
+      $workerQuery->where('age', '>', $data['from']);
     }
 
-    public function edit(Worker $worker)
-    {
-        return view('worker.edit', compact('worker'));
+    if (isset($data['to'])) {
+      $workerQuery->where('age', '<', $data['to']);
     }
 
-    public function update(UpdateRequest $request, Worker $worker)
-    {
-        $data = $request->validated();
-        $data['is_married'] = isset($data['is_married']);
-
-        $worker->update($data);
-
-        return redirect()->route('worker.show', $worker->id);
+    if (isset($data['description'])) {
+      $workerQuery->where('description', 'like', "%{$data['description']}%");
     }
 
-    public function delete(Worker $worker)
-    {
-        $worker->delete();
-        return redirect()->route('worker.index');
+    if (isset($data['is_married'])) {
+      $workerQuery->where('is_married', true);
     }
+
+    $workers = $workerQuery->paginate(3);
+
+    return view('worker.index', compact('workers'));
+
+  }
+
+  public function show(Worker $worker)
+  {
+    return view('worker.show', compact('worker'));
+  }
+
+  public function create()
+  {
+    return view('worker.create');
+  }
+
+  public function store(StoreRequest $request)
+  {
+    $data = $request->validated();
+    $data['is_married'] = isset($data['is_married']);
+    Worker::create($data);
+
+    return redirect()->route('worker.index');
+  }
+
+  public function edit(Worker $worker)
+  {
+    return view('worker.edit', compact('worker'));
+  }
+
+  public function update(UpdateRequest $request, Worker $worker)
+  {
+    $data = $request->validated();
+    $data['is_married'] = isset($data['is_married']);
+
+    $worker->update($data);
+
+    return redirect()->route('worker.show', $worker->id);
+  }
+
+  public function delete(Worker $worker)
+  {
+    $worker->delete();
+    return redirect()->route('worker.index');
+  }
 }
